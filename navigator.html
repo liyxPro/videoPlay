@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align:center"> 
+        <div id="tipText"></div>
+        <br> 
+        <video id="video1" width="420">
+            <source src="video/mov_bbb.mp4" type="video/mp4">
+            您的浏览器不支持 HTML5 video 标签。
+        </video>
+    </div> 
+    <script>
+        function isPlay(){
+            var netWorkState=navigator.connection.type;
+            ifPlay=false;
+            if(netWorkState){
+                netWorkState=="wifi"
+                switch (netWorkState){
+                    case "wifi":
+                    ifPlay=true;
+                    break;
+                    case "2g":
+                    ifPlay=false;
+                    break;
+                    case "3g":
+                    ifPlay=false;
+                    break;
+                    case "4g":
+                    ifPlay=false;
+                    break;
+                }
+            }else{
+                ifPlay=true;
+            }
+            return ifPlay;
+        }   
+        window.onload=function(){
+            var myVideo=document.getElementById("video1");
+            function playPause(){ 
+                if (isPlay()){
+                    myVideo.play();
+                }else {
+                     myVideo.pause(); 
+                    tipText.innerHTML="您的网络环境为移动流量，是否确定继续播放";
+                }
+                
+            } 
+            playPause()
+        }
+        
+        
+    </script>
+</body>
+</html>
